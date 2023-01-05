@@ -16,9 +16,27 @@ const slider = require("./assets/slider.jpg");
 const messageLogo = require("./assets/messageLogo.jpg");
 
 export default function App() {
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header image={image} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
@@ -31,7 +49,7 @@ export default function App() {
           }}
         >
           <Text style={{ fontWeight: "800", fontSize: 15, marginVertical: 20 }}>
-            ערב טוב! ראמי
+            ערב טוב!
           </Text>
           <Image
             source={slider}

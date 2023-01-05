@@ -14,10 +14,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Feather } from "@expo/vector-icons";
 
 const PlaceholderImage = require("../assets/Logo.jpg");
-const Rami = require("../assets/Rami.jpeg");
 const handBook = require("../assets/hand-book.jpg");
 
-export default function Header() {
+export default function Header({ image }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [imageSelector, setImageSelector] = useState(0);
   return (
@@ -78,10 +77,7 @@ export default function Header() {
                   }}
                   onPress={() => setModalVisible(false)}
                 >
-                  <Image
-                    source={imageSelector ? Rami : handBook}
-                    style={{ width: 85, height: 85 }}
-                  />
+                  <Image source={image} style={{ width: 85, height: 85 }} />
                 </Pressable>
               </View>
             </View>
@@ -266,10 +262,7 @@ export default function Header() {
             }}
             onPress={() => setModalVisible(true)}
           >
-            <Image
-              source={imageSelector ? Rami : handBook}
-              style={{ width: 35, height: 35 }}
-            />
+            <Image source={image} style={{ width: 35, height: 35 }} />
             {/* <View
               style={{
                 width: 12,

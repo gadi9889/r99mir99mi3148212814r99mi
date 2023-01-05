@@ -16,7 +16,7 @@ import { Feather } from "@expo/vector-icons";
 const PlaceholderImage = require("../assets/Logo.jpg");
 const handBook = require("../assets/hand-book.jpg");
 
-export default function Header({ image, pickImage }) {
+export default function Header({ image, pickImage, name }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [imageSelector, setImageSelector] = useState(0);
   return (
@@ -61,7 +61,7 @@ export default function Header({ image, pickImage }) {
                   <Text
                     style={{ color: "#fff", fontWeight: "500", fontSize: 16 }}
                   >
-                    ראמי
+                    {name}
                   </Text>
                   <Text style={{ color: "#fff", fontSize: 13 }}>
                     מחובר כ- סטונדט.ית

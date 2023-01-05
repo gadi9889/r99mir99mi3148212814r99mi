@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
   Button,
+  TextInput,
 } from "react-native";
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
@@ -19,24 +20,36 @@ import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
   const [image, setImage] = useState(null);
-
+  const [name, setName] = useState("רמי");
+  const [isConfirm, setIsConfirm] = useState(false);
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [3, 4],
       quality: 1,
     });
 
-    setImage(result.assets[0].uri);
     if (!result.canceled) {
+      setImage(result.assets[0].uri);
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header image={image} pickImage={pickImage} />
+      <Header name={name} image={image} pickImage={pickImage} />
+      {!isConfirm && (
+        <>
+          <TextInput
+            value={name}
+            onChangeText={(e) => {
+              setName(e);
+            }}
+          />
+          <Button title="E" onPress={() => setIsConfirm(true)}></Button>
+        </>
+      )}
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
@@ -49,7 +62,7 @@ export default function App() {
           }}
         >
           <Text style={{ fontWeight: "800", fontSize: 15, marginVertical: 20 }}>
-            ערב טוב!
+            ערב טוב! {name}
           </Text>
           <Image
             source={slider}

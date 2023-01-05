@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "fakeuni",
-    "slug": "fakeuni",
+    "slug": "r99mir99mi3148212814r99mi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/spalsh-1.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "250e93e2-02a4-4590-8d6f-315fa90b8473"
+      }
+    },
+    "owner": "gadi9889"
   }
 }

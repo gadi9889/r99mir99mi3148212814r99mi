@@ -16,7 +16,7 @@ import { Feather } from "@expo/vector-icons";
 const PlaceholderImage = require("../assets/Logo.jpg");
 const handBook = require("../assets/hand-book.jpg");
 
-export default function Header({ image }) {
+export default function Header({ image, pickImage }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [imageSelector, setImageSelector] = useState(0);
   return (
@@ -75,9 +75,12 @@ export default function Header({ image }) {
                     borderRadius: 100,
                     overflow: "hidden",
                   }}
-                  onPress={() => setModalVisible(false)}
+                  onPress={pickImage}
                 >
-                  <Image source={image} style={{ width: 85, height: 85 }} />
+                  <Image
+                    source={{ uri: image }}
+                    style={{ width: 85, height: 85 }}
+                  />
                 </Pressable>
               </View>
             </View>
@@ -262,7 +265,7 @@ export default function Header({ image }) {
             }}
             onPress={() => setModalVisible(true)}
           >
-            <Image source={image} style={{ width: 35, height: 35 }} />
+            <Image source={{ uri: image }} style={{ width: 35, height: 35 }} />
             {/* <View
               style={{
                 width: 12,

@@ -6,14 +6,16 @@ import {
   Image,
   Dimensions,
   ScrollView,
+  Button,
 } from "react-native";
 import Header from "./components/Header";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Section from "./components/Section";
 const PlaceholderImage = require("./assets/Logo.jpg");
 const slider = require("./assets/slider.jpg");
 const messageLogo = require("./assets/messageLogo.jpg");
+import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
   const [image, setImage] = useState(null);
@@ -27,16 +29,14 @@ export default function App() {
       quality: 1,
     });
 
-    console.log(result);
-
+    setImage(result.assets[0].uri);
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
     }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header image={image} />
+      <Header image={image} pickImage={pickImage} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
